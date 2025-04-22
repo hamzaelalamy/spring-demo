@@ -1,37 +1,36 @@
 package com.example.demo.student;
 
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "students")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer age;
-    private LocalDate dateOfBirth;
     private String email;
+    private LocalDate dateOfBirth;
 
+    // Default constructor required by JPA
     public Student() {
     }
 
-    public Student(Long id,
-                   String name,
-                   String email,
-                   Integer age,
-                   LocalDate dateOfBirth
-                   ) {
+    public Student(String name, String email, LocalDate dateOfBirth) {
+        this.name = name;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Student(Long id, String name, String email, LocalDate dateOfBirth) {
         this.id = id;
         this.name = name;
-        this.age = age;
-        this.dateOfBirth = dateOfBirth;
         this.email = email;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public Student(String name, String email, Integer age, LocalDate dateOfBirth) {
-        this.name = name;
-        this.age = age;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-    }
-
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -48,12 +47,12 @@ public class Student {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public LocalDate getDateOfBirth() {
@@ -64,24 +63,13 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", age=" + age +
-                ", dateOfBirth=" + dateOfBirth +
                 ", email='" + email + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
                 '}';
     }
-
-
 }
