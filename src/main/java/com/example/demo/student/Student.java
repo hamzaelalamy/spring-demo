@@ -14,10 +14,10 @@ public class Student {
     private LocalDate dateOfBirth;
 
     // Default constructor required by JPA
-    public Student() {
+    public Student(long l, String hashim, String mail, LocalDate localDate, int i) {
     }
 
-    public Student(String name, String email, LocalDate dateOfBirth) {
+    public Student(String name, String email, LocalDate dateOfBirth, int i) {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
@@ -28,6 +28,10 @@ public class Student {
         this.name = name;
         this.email = email;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Student() {
+
     }
 
     // Getters and Setters
