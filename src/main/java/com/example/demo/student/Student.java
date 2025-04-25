@@ -2,6 +2,7 @@ package com.example.demo.student;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name = "students")
@@ -12,6 +13,8 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dateOfBirth;
+    @Transient
+    private Integer age;
 
     // Default constructor required by JPA
     public Student(long l, String hashim, String mail, LocalDate localDate, int i) {
@@ -65,6 +68,10 @@ public class Student {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Integer getAge() {
+        return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
     }
 
     @Override
